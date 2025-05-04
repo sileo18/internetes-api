@@ -34,4 +34,11 @@ public class WordController {
 
          return ResponseEntity.ok(words);
     }
+
+    @GetMapping("/get-all")
+    public ResponseEntity<List<Word>> getAll(@RequestParam int page, @RequestParam int size) {
+        List<Word> words = wordService.findAll(page ,size);
+
+        return ResponseEntity.ok(words);
+    }
 }

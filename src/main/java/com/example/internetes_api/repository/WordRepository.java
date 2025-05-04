@@ -4,6 +4,8 @@ import com.example.internetes_api.domains.Word;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.data.domain.Pageable;
+
 
 import java.util.List;
 
@@ -16,4 +18,7 @@ public interface WordRepository extends JpaRepository<Word, Long> {
     ORDER BY similarity(term, :query) DESC
     """, nativeQuery = true)
     List<Word> searchBySimilarity(@Param("query") String query);
+
+    @Query("SELECT * from Word")
+    List<Word> findAllByPage(Pageable pageable);
 }

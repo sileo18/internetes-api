@@ -1,9 +1,9 @@
 package com.example.internetes_api.service;
 
 import com.example.internetes_api.domains.Word;
-import com.example.internetes_api.dtos.WordCreateRequestDTO;
-import com.example.internetes_api.mapper.WordMapper;
 import com.example.internetes_api.repository.WordRepository;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -26,5 +26,12 @@ public class WordService {
         List<Word> words = wordRepository.searchBySimilarity(query);
 
         return words;
+    }
+
+    public List<Word> findAll(int page, int size) {
+
+        Pageable pageable = PageRequest.of(page, size);
+
+        return wordRepository.findAllByPage(pageable);
     }
 }
