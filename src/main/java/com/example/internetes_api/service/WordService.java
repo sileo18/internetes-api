@@ -21,4 +21,10 @@ public class WordService {
 
         return wordRepository.save(word);
     }
+
+    public List<Word> searchBySimilarity(String query) {
+        List<Word> words = wordRepository.searchBySimilarity(query);
+
+        return words;
+    }
 }

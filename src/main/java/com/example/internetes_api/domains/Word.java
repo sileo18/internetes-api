@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 
 import java.time.LocalDate;
@@ -13,10 +14,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@AllArgsConstructor
-@RequiredArgsConstructor
 @Table(name = "word")
 public class Word {
+
+    public Word() {
+    }
 
     public Word(Long id, String term, String definition, String partOfSpeech, List<Example> examples, List<Synonyms> synonyms, LocalDate createdAt) {
         this.id = id;

@@ -6,10 +6,9 @@ import com.example.internetes_api.mapper.WordMapper;
 import com.example.internetes_api.repository.WordRepository;
 import com.example.internetes_api.service.WordService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/word")
@@ -27,5 +26,12 @@ public class WordController {
         Word wordSaved =  wordService.create(WordMapper.toEntity(request));
 
         return ResponseEntity.ok(wordSaved);
+    }
+
+    @GetMapping("/search")
+    public ResponseEntity<List<Word>> search(@RequestParam("q") String query) {
+         List<Word> words = wordService.searchBySimilarity(query);
+
+         return ResponseEntity.ok(words);
     }
 }

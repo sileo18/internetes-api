@@ -25,6 +25,8 @@ public class Synonyms {
     @JsonBackReference
     private Word word;
 
+    public Synonyms() {};
+
     // Construtor que aceita o conteúdo
     public Synonyms(String content) {
         this.content = content;

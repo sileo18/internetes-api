@@ -9,7 +9,6 @@ import lombok.RequiredArgsConstructor;
 
 @Entity
 @AllArgsConstructor
-@NoArgsConstructor
 @Table(name = "example")
 public class Example {
 
@@ -25,7 +24,7 @@ public class Example {
     @JsonBackReference
     private Word word;
 
-    // Construtor que aceita o conteúdo
+    public Example() {};
     public Example(String content) {
         this.content = content;
     }
