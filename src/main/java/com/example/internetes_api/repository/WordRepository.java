@@ -19,6 +19,6 @@ public interface WordRepository extends JpaRepository<Word, Long> {
     """, nativeQuery = true)
     List<Word> searchBySimilarity(@Param("query") String query);
 
-    @Query("SELECT * from Word")
+    @Query("SELECT w from Word w")
     List<Word> findAllByPage(Pageable pageable);
 }
