@@ -13,7 +13,7 @@ public interface WordRepository extends JpaRepository<Word, Long> {
 
     @Query(value = """
     SELECT * FROM word
-    WHERE similarity(term, :query) > 0.1
+    WHERE similarity(term, :query) > 0.2
        OR term ILIKE CONCAT('%', :query, '%')
     ORDER BY similarity(term, :query) DESC
     """, nativeQuery = true)
