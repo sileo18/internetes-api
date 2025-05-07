@@ -7,6 +7,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class WordService {
@@ -33,5 +34,9 @@ public class WordService {
         Pageable pageable = PageRequest.of(page, size);
 
         return wordRepository.findAllByPage(pageable);
+    }
+
+    public Word findById(Long id) {
+        return wordRepository.findById(id).orElseThrow(() -> new RuntimeException("Word not found"));
     }
 }

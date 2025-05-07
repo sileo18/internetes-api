@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/word")
@@ -41,4 +42,13 @@ public class WordController {
 
         return ResponseEntity.ok(words);
     }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Word> getById(@PathVariable Long id) {
+
+        Word word = wordService.findById(id);
+
+        return ResponseEntity.ok(word);
+    }
+
 }
