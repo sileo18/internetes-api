@@ -9,7 +9,6 @@ import lombok.RequiredArgsConstructor;
 
 @Entity
 @AllArgsConstructor
-@NoArgsConstructor
 @Table(name = "synonym")
 public class Synonyms {
 
@@ -27,7 +26,6 @@ public class Synonyms {
 
     public Synonyms() {};
 
-    // Construtor que aceita o conteúdo
     public Synonyms(String content) {
         this.content = content;
     }
